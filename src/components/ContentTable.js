@@ -2,8 +2,19 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table, Form } from 'react-bootstrap';
 
+const TableItem = ({first_name, last_name, username}) => (
+    <tr>
+      <td>{first_name}</td>
+      <td>{last_name}</td>
+      <td>{username}</td>
+      <td><Form.Check aria-label="option 1" /></td>
+    </tr>
+)
+
 class ContentTable extends React.PureComponent {
     render() {
+      const users = this.props.users;
+      debugger
       return (
         <div className="card-body">
           <Table striped hover responsive>
@@ -16,23 +27,7 @@ class ContentTable extends React.PureComponent {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Sravan</td>
-                <td>Bonagiri</td>
-                <td>sravan.bonagiri@imaginea.com</td>
-                <td><Form.Check aria-label="option 1" /></td>
-              </tr>
-              <tr>
-                <td>Siva</td>
-                <td>Motamarri</td>
-                <td>sivakrishna.motamarri@imaginea.com</td>
-                <td><Form.Check aria-label="option 1" /></td>
-              </tr>
-              <tr>
-                <td colSpan="2">No name</td>
-                <td>@No id</td>
-                <td><Form.Check aria-label="option 1" /></td>
-              </tr>
+              { users.map(user => <TableItem {...user} key={user.id} />) }
             </tbody>
           </Table>
         </div>

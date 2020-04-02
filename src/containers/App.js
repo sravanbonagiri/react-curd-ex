@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import USERS from "../Data"
 import ActionBar from '../components/ActionBar';
 import ContentTable from '../components/ContentTable';
 
@@ -12,7 +13,7 @@ function App() {
           <div className="col-sm-12 grid-margin">
             <div className="card h-100">
               <ActionBar />
-              <ContentTable />
+              <ContentTable users={USERS} />
             </div>
           </div>
         </div>
