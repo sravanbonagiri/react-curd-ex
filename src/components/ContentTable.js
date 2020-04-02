@@ -14,7 +14,6 @@ const TableItem = ({first_name, last_name, username}) => (
 class ContentTable extends React.PureComponent {
     render() {
       const users = this.props.users;
-      debugger
       return (
         <div className="card-body">
           <Table striped hover responsive>
