@@ -1,17 +1,6 @@
-import { createStore } from 'redux'
+import { combineReducers } from "redux";
+import userReducer from './user_reducer'
 
-const initialState = {
-    history: [
-      {
-        users: {}
-      }
-    ]
-  }
-  
-  const reducer = (state = initialState, action )  => {
-    console.log(state);
-    
-    return state
-  }
-
-  export default reducer;
+export default combineReducers({
+  users: userReducer
+})
