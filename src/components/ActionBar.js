@@ -4,7 +4,7 @@ import { InputGroup, FormControl, Button, Modal, Form, Col } from 'react-bootstr
 import CreateUserModal from './CreateUserModal'
 
 function ActionBar(props){
-  const [modalShow, setModalShow] = React.useState(false);
+
   console.log("------88888888888888>>>>>>>>>>>>>>>>>>>")
   console.log(props)
   return(
@@ -19,13 +19,8 @@ function ActionBar(props){
       </InputGroup>
 
       <div className="col-sm-6">
-        <Button variant="danger" style={{float: 'right'}} className="mr-2">Delete</Button>
-        <Button variant="primary" onClick={() => setModalShow(true)} style={{float: 'right'}} className="mr-2">Create</Button>
-        <CreateUserModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-          createuser={props.createuser}
-        />
+        <Button variant="danger" style={{float: 'right'}} onClick={() => props.deleteUsers()} className="mr-2">Delete</Button>
+        <Button variant="primary" onClick={() => props.setModalShow(true)} style={{float: 'right'}} className="mr-2">Create</Button>
       </div>
     </div>
   ) 
