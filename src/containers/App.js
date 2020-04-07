@@ -6,10 +6,10 @@ import EditUserModal from "../components/EditUserModal"
 import ActionBar from '../components/ActionBar';
 import ContentTable from '../components/ContentTable';
 import { bindActionCreators } from "redux"
-import { createUser, editUser, deleteUser, setDeleteUsers, deleteUsers } from '../redux/actions/user_actions'
+import { createUser, editUser, deleteUser, setDeleteUsers, deleteUsers, handleChange, searchUsers } from '../redux/actions/user_actions'
 
 function App (props){
-  const {users, createUser, editUser, deleteUser, setDeleteUsers, deleteUsers} = props;
+  const {users, createUser, editUser, deleteUser, setDeleteUsers, deleteUsers, handleChange, searchUsers} = props;
   const [newModalShow, setNewModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [currentUser, setCurrentUser] = useState({id: null, first_name: "", last_name: "", username: ""})
@@ -31,7 +31,11 @@ function App (props){
         <div className="row mb-4">
           <div className="col-sm-12 grid-margin">
             <div className="card h-100">
-              <ActionBar createuser={createUser} setModalShow={setNewModal} deleteUsers={deleteUsers}/>
+              <ActionBar createuser={createUser}
+                         setModalShow={setNewModal}
+                         deleteUsers={deleteUsers}
+                         handleChange={handleChange}
+                         searchUsers={searchUsers}/>
               <ContentTable users={users}
                             setEditUser={setUser}
                             setEditModalShow={setEditModal}
@@ -70,7 +74,9 @@ const mapActionsToProps = (dispatch) => {
     editUser,
     deleteUser,
     setDeleteUsers,
-    deleteUsers
+    deleteUsers,
+    handleChange,
+    searchUsers
   }, dispatch )
 }
 

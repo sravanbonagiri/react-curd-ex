@@ -3,6 +3,9 @@ export const EDIT_USER = "EDIT_USER";
 export const DELETE_USER = "DELETE_USER";
 export const SET_DELETE_USERS = "SET_DELETE_USERS";
 export const DELETE_USERS = "DELETE_USERS";
+export const HANDLE_CHANGE = "HANDLE_CHANGE";
+export const SEARCH_USERS = "SEARCH_USERS";
+
 
 export function createUser({id, first_name, last_name, username}) {
     return{
@@ -35,5 +38,18 @@ export function setDeleteUsers(id) {
 export function deleteUsers() {
     return{
         type: DELETE_USERS
+    }
+};
+
+export function handleChange(text) {
+    return{
+        type: HANDLE_CHANGE,
+        text: text
+    }
+};
+
+export function searchUsers() {
+    return{
+        type: SEARCH_USERS
     }
 };
