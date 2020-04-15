@@ -1,4 +1,4 @@
-import React , { useState }  from 'react';
+import React , { useState, useEffect }  from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import CreateUserModal from "../components/CreateUserModal"
@@ -6,10 +6,14 @@ import EditUserModal from "../components/EditUserModal"
 import ActionBar from '../components/ActionBar';
 import ContentTable from '../components/ContentTable';
 import { bindActionCreators } from "redux"
-import { createUser, editUser, deleteUser, setDeleteUsers, deleteUsers, handleChange, searchUsers } from '../redux/actions/user_actions'
+import { createUser, editUser, deleteUser, setDeleteUsers,
+        deleteUsers, handleChange, searchUsers, getUsers, receiveGetUsers,
+        receiveCreateUser } from '../redux/actions/user_actions'
 
 function App (props){
-  const {users, createUser, editUser, deleteUser, setDeleteUsers, deleteUsers, handleChange, searchUsers} = props;
+  const {users, createUser, editUser, deleteUser,
+        setDeleteUsers, deleteUsers, handleChange,
+        searchUsers, getUsers, receiveGetUsers, receiveCreateUser} = props;
   const [newModalShow, setNewModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [currentUser, setCurrentUser] = useState({id: null, first_name: "", last_name: "", username: ""})
@@ -23,6 +27,10 @@ function App (props){
   const setUser = user => {
     setCurrentUser(user);
   }
+
+  useEffect(() => {
+   getUsers()
+  },[]);
 
   return (
     <div className="App">
@@ -76,7 +84,10 @@ const mapActionsToProps = (dispatch) => {
     setDeleteUsers,
     deleteUsers,
     handleChange,
-    searchUsers
+    searchUsers,
+    getUsers,
+    receiveGetUsers,
+    receiveCreateUser
   }, dispatch )
 }
 

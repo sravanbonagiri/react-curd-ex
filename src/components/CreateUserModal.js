@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Modal, Form, Col } from 'react-bootstrap';
 
 function CreateUserModal(props) {
-  const initialFormState = { id: null, first_name: "", last_name: "", username: "" };
+  const initialFormState = { id: null, name: "", salary: "", age: "" };
   const [user, setUser] = React.useState(initialFormState);
 
   const handleInputChange = event => {
@@ -28,53 +28,53 @@ function CreateUserModal(props) {
       <Form
           onSubmit={event => {
             event.preventDefault();
-            if (!user.first_name || !user.last_name || !user.username) return;
+            if (!user.name || !user.salary || !user.age) return;
             props.createuser(user);
             props.onHide(true)
             setUser(initialFormState);
           }}
         >
-          <Form.Group controlId="first_name">
+          <Form.Group controlId="name">
             <Form.Row>
               <Col>
-                <Form.Label>First Name</Form.Label>
+                <Form.Label>Employee Name</Form.Label>
               </Col>
               <Col>
                 <input
                   type="text"
-                  name="first_name"
-                  value={user.first_name}
+                  name="name"
+                  value={user.name}
                   onChange={handleInputChange}
                 />
               </Col>
             </Form.Row>
           </Form.Group>
 
-          <Form.Group controlId="last_name">
+          <Form.Group controlId="salary">
             <Form.Row>
               <Col>
-                <Form.Label>Last Name</Form.Label>
+                <Form.Label>Employee Salary</Form.Label>
               </Col>
               <Col>
                 <input
                   type="text"
-                  name="last_name"
-                  value={user.last_name}
+                  name="salary"
+                  value={user.salary}
                   onChange={handleInputChange}
                 />
               </Col>
             </Form.Row>
           </Form.Group>
-          <Form.Group controlId="username">
+          <Form.Group controlId="age">
             <Form.Row>
               <Col>
-                <Form.Label>Username</Form.Label>
+                <Form.Label>Employee Age</Form.Label>
               </Col>
               <Col>
                 <input
                   type="text"
-                  name="username"
-                  value={user.username}
+                  name="age"
+                  value={user.age}
                   onChange={handleInputChange}
                 />
               </Col>

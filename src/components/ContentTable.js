@@ -2,16 +2,16 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table, Form, Button} from 'react-bootstrap';
 
-const TableItem = ({id, first_name, last_name, username, setEditUser, showEditModal, deleteCurrentUser, setDeleteUsers}) => (
+const TableItem = ({id, employee_name, employee_salary, employee_age, setEditUser, showEditModal, deleteCurrentUser, setDeleteUsers}) => (
     <tr>
-      <td>{first_name}</td>
-      <td>{last_name}</td>
-      <td>{username}</td>
+      <td>{employee_name}</td>
+      <td>{employee_salary}</td>
+      <td>{employee_age}</td>
       <td className="row">
         <Form.Check aria-label="option 1" onChange={() => setDeleteUsers(id)}/>
         <div className="col-sm-2">
           <Button variant="outline-primary"
-            onClick={() => {setEditUser({id, first_name, last_name, username}); showEditModal(true); }}
+            onClick={() => {setEditUser({id, employee_name, employee_salary, employee_age}); showEditModal(true); }}
             size="sm" >
           Edit
           </Button>
@@ -39,14 +39,14 @@ class ContentTable extends React.PureComponent {
           <Table striped hover responsive>
             <thead>
               <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                <th>Actions</th>
+                <th>Employee Name</th>
+                <th>Employee Salary</th>
+                <th>Employee Age</th>
+                <th>Actions </th>
               </tr>
             </thead>
             <tbody>
-              { users.USERS.map(user => <TableItem {...user} key={user.id}
+              { users.employees.map(user => <TableItem {...user} key={user.id}
                                               setEditUser={setEditUser}
                                               showEditModal={showEditModalShow}
                                               deleteCurrentUser={deleteCurrentUser}

@@ -1,23 +1,54 @@
 export const CREATE_USER = "CREATE_USER";
+export const GET_USERS = "GET_USERS";
+export const RECEIVE_GET_USERS = "RECEIVE_GET_USERS"
 export const EDIT_USER = "EDIT_USER";
 export const DELETE_USER = "DELETE_USER";
 export const SET_DELETE_USERS = "SET_DELETE_USERS";
 export const DELETE_USERS = "DELETE_USERS";
 export const HANDLE_CHANGE = "HANDLE_CHANGE";
 export const SEARCH_USERS = "SEARCH_USERS";
+export const RECEIVE_UPDATE_USER = "RECEIVE_UPDATE_USER"
+export const RECEIVE_CREATE_USER = "RECEIVE_CREATE_USER"
 
 
-export function createUser({id, first_name, last_name, username}) {
+export function getUsers() {
     return{
-        type: CREATE_USER,
-        payload: {id, first_name, last_name, username}
+        type: GET_USERS
     }
 };
 
-export function editUser({id, first_name, last_name, username}) {
+export function receiveGetUsers(payload) {
+    return{
+        type: RECEIVE_GET_USERS,
+        payload: payload
+    }
+};
+
+export function receiveUpdateUser(payload) {
+    return{
+        type: RECEIVE_UPDATE_USER,
+        payload: payload
+    }
+};
+
+export function receiveCreateUser(payload){
+    return{
+        type: RECEIVE_CREATE_USER,
+        payload: payload
+    }
+}
+
+export function createUser({id, name, salary, age}) {
+    return{
+        type: CREATE_USER,
+        payload: {id, name, salary, age}
+    }
+};
+
+export function editUser({id, employee_name, employee_salary, employee_age}) {
     return{
         type: EDIT_USER,
-        payload: {id, first_name, last_name, username}
+        payload: {id, employee_name, employee_salary, employee_age}
     }
 };
 

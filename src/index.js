@@ -1,14 +1,23 @@
 import React from 'react';
 import {render} from 'react-dom';
+import { all } from 'redux-saga/effects';
+import createSagaMiddleware from 'redux-saga';
 import {Provider} from 'react-redux'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './containers/App';
 import {createStore, applyMiddleware} from 'redux';
 import reducer from './redux/reducers'
-//import {createStore, applyMiddleware} from 'redux'
+import sagas from './redux/reducers/sagas/index';
 import * as serviceWorker from './serviceWorker';
 
-const Store = createStore(reducer);
+const sagaMiddleware = createSagaMiddleware();
+
+const Store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware)
+);
+
+Object.values(sagas).forEach(sagaMiddleware.run.bind(sagaMiddleware))
+//sagaMiddleware.run(sagas);
 
 render(
   <Provider store={Store}><App /></Provider>, document.getElementById('root')
